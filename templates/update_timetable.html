@@ -1,0 +1,28 @@
+<!-- templates/update_timetable.html -->
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Update Your Timetable</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <th>Period</th>
+        <th>Subject</th>
+        <th>Time Slot</th>
+      </tr>
+      {% for entry in timetable_entries %}
+        <tr>
+          <td>{{ entry.period }}</td>
+          <td>
+            <input type="text" name="subject_{{ entry.id }}" value="{{ entry.subject }}">
+          </td>
+          <td>
+            <input type="text" name="time_slot_{{ entry.id }}" value="{{ entry.time_slot }}">
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <button type="submit">Update Timetable</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,116 @@
+/* timetable.css */
+
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Timetable Table */
+.timetable-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.timetable-table th, .timetable-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.timetable-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+}
+
+.timetable-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.timetable-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Highlight Current Day */
+.highlight-today {
+    background-color: #ffeb3b !important;
+}
+
+/* Form Styles */
+.timetable-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.timetable-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timetable-form input,
+.timetable-form select,
+.timetable-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.timetable-form input.error,
+.timetable-form select.error,
+.timetable-form textarea.error {
+    border-color: red;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.primary:hover {
+    background-color: #45a049;
+}
+
+button.danger {
+    background-color: #f44336;
+    color: white;
+}
+
+button.danger:hover {
+    background-color: #da190b;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .timetable-table th, .timetable-table td {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
