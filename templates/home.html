@@ -1,0 +1,25 @@
+<!-- templates/home.html -->
+{% extends 'base_generic.html' %} {% block content %}
+<div class="home-page">
+  <h2>Welcome to the School Timetable Management System</h2>
+  <p>
+    Hi, {{ user.username }}! You are logged in and ready to manage the school
+    timetable.
+  </p>
+
+  <p>Here are your options:</p>
+  <ul>
+    <li><a href="{% url 'view_timetable' %}">View Timetable</a></li>
+    <li><a href="{% url 'update_timetable' %}">Update Timetable</a></li>
+    <li>
+      <a href="{% url 'logout' %}">
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token%}
+          <button type="submit">Logout</button>
+        </form>
+      </a>
+    </li>
+    <!-- Logout link -->
+  </ul>
+</div>
+{% endblock %}
