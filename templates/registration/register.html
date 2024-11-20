@@ -1,7 +1,6 @@
-{% load static %}
+{% extends 'registration/sign_up_base.html' %} {% load static %}<br />
+{% block content %}
 
-<!-- templates/registration/register.html -->
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,8 +20,9 @@
 
       /* Add padding to containers */
       .container {
-        padding: 16px;
+        padding: 8px;
         background-color: white;
+      
       }
 
       /* Full-width input fields */
@@ -76,10 +76,9 @@
       }
     </style>
 
-    <body>
-      <form method="POST">
+    <body><div  class=""><form method="POST" style="color: black" >
         {% csrf_token %}
-        <div class="container">
+        <div class="container" >
           <h1>Register</h1>
           <p>Please fill in this form to create an account.</p>
           <hr />
@@ -90,7 +89,7 @@
           </div>
 
           <div>
-            <label for="email">Email:</label>
+            <label for="email" class="form-control">Email:</label>
             {{ form.email }}
           </div>
           <br />
@@ -119,8 +118,7 @@
             Already have an account? <a href="{% url 'login' %}">Login here</a>
           </p>
         </div>
-      </form>
-    </body>
+      </form></div></body>
 
     {% if messages %}
     <div class="messages">
@@ -131,3 +129,4 @@
     {% endif %}
   </body>
 </html>
+{% endblock content %}

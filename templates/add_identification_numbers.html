@@ -1,0 +1,40 @@
+{% extends 'base_generic.html' %} {% comment %}
+<div class="">{% block title %}{{ title }}{% endblock title %}</div>
+{% endcomment %} {% load crispy_forms_tags %} {% load static %} <br />
+{% block content %}
+<div id="input-nav">
+  <a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i>
+  <a href="{% url 'add_identification_numbers' %}" class="primary1"
+    >Identification Numbers</a
+  >
+  <i>&rsaquo;</i> Add
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <p class="form-title">Admission Number / Staff ID Add Form</p>
+      <div class="p-3">
+        <br />
+
+        <form method="post">
+          {% csrf_token %}
+          <label for="identification_numbers"
+            >Enter Admission Number / Staff ID</label
+          ><br />
+          <input
+            class="form-control"
+            type="text"
+            name="identification_numbers"
+            id="identification_numbers"
+            required
+          />
+          <br /><br />
+          <button type="submit" class="btn btn-primary">Add Number</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

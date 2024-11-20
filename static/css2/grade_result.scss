@@ -1,0 +1,237 @@
+
+body {
+     box-sizing: border-box;
+     padding: 0;
+     margin: 0;
+
+}
+
+.logo {
+     padding: 8px;
+}
+
+.container {
+     /* background-image: url("/lms/static/img/background.PNG"); */
+     opacity: 1;
+     background-repeat: no-repeat;
+     background-attachment: scroll;
+     object-fit: contain;
+     z-index: -1;
+     opacity: 1;
+     color: black;
+     text-align: center;
+     margin: 0 auto;
+     width: 900px;
+     height: 1300px;
+     padding: 5px;
+     border: 15px black;
+     padding-left: 0.5px;
+
+     .border-page {
+          position: relative;
+          border-style: solid;
+          border-width: 5px;
+          height: 1260px;
+
+          .parent-name {
+               position: absolute;
+               top: 5px;
+               left: 10px;
+               width: 300px;
+               height: 65px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .grade-scale {
+               position: absolute;
+               top: 95px;
+               left: 10px;
+               width: 300px;
+               height: 80px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .grade-point {
+               position: absolute;
+               top: 200px;
+               left: 10px;
+               width: 300px;
+               height: 56px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .student-name {
+               position: absolute;
+               top: 5px;
+               right: 95px;
+               width: 216px;
+               height: 50px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .student-id {
+               position: absolute;
+               top: 5px;
+               right: 10px;
+               width: 70px;
+               height: 50px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .session {
+               position: absolute;
+               top: 90px;
+               right: 212px;
+               width: 98px;
+               height: 50px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .trimester {
+               position: absolute;
+               top: 90px;
+               right: 95px;
+               width: 113px;
+               height: 50px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .klass {
+               position: absolute;
+               top: 90px;
+               right: 10px;
+               width: 70px;
+               height: 50px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .attendance {
+               position: absolute;
+               top: 170px;
+               right: 10px;
+               width: 300px;
+               height: 17px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .opened {
+               position: absolute;
+               top: 200px;
+               right: 162px;
+               width: 148px;
+               height: 17px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+
+          .absent {
+               position: absolute;
+               top: 200px;
+               right: 10px;
+               width: 148px;
+               height: 17px;
+               border: 3px solid black;
+               text-align: center;
+               padding-top: 10px;
+          }
+     }
+}
+
+.sch-name {
+     .heading {
+          font-size: 20px;
+          font-weight: 5px;
+          padding-top: 20px;
+
+          .sub-heading {
+               margin-top: -20px;
+          }
+     }
+
+     .academic-prog {
+          margin-top: -28px;
+          border-style: solid;
+     }
+}
+
+.scores {
+     margin-top: -20px;
+
+     table,
+     td,
+     th {
+          border: 2px solid black;
+          text-align: left;
+     }
+
+     table {
+          border-collapse: collapse;
+          width: 891px;
+     }
+
+     th,
+     td {
+          padding: 2.5px;
+     }
+
+     td {
+          font-size: 12px;
+          height: 18px;
+     }
+}
+
+.column {
+     float: left;
+     padding: 6px;
+     height: 210px;
+     /* Should be removed. Only for demonstration */
+}
+
+.left {
+     width: 490px;
+     position: absolute;
+}
+
+.middle {
+     width: 190px;
+     right: 189px;
+     position: absolute;
+}
+
+.right {
+     width: 175px;
+     right: 0px;
+     position: absolute;
+}
+
+/* Clear floats after the columns */
+.comment-row:after {
+     content: "";
+     display: table;
+     clear: both;
+}
+
+.habit {
+     width: 498px;
+     height: 110px;
+     text-align: left;
+}

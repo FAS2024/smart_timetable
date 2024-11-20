@@ -1,0 +1,41 @@
+{% extends 'base_generic.html' %} {% comment %}
+<div class="">{% block title %}{{ title }}{% endblock title %}</div>
+{% endcomment %} {% load crispy_forms_tags %} {% load static %} <br />
+{% block content %}
+<div id="input-nav">
+  <a href="{% url 'home' %}" class="primary1">Home</a>
+  <a href="{% url 'add_identification_numbers' %}" class="primary1"
+    >Identification Numbers</a
+  >
+  Edit
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <p class="form-title">Update Admission Number / Staff ID Form</p>
+      <div class="p-3">
+        <br />
+
+        <form method="post">
+          {% csrf_token %}
+          <label for="identification_number"
+            >Enter Admission Number / Staff ID</label
+          ><br />
+          <input
+            class="form-control"
+            type="text"
+            name="new_identification_number"
+            id="new_identification_number"
+            required
+            value="{{identification_number.identification_number}}"
+          />
+          <br /><br />
+          <button type="submit" class="btn btn-primary">Update Number</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

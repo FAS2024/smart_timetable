@@ -18,3 +18,8 @@ class RegistrationForm(forms.ModelForm):
         if password != password_confirmation:
             raise ValidationError("Passwords do not match.")
         return password_confirmation
+    
+    
+
+class IdentificationNumberForm(forms.Form):
+    identification_number = forms.CharField(max_length=50)

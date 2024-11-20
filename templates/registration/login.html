@@ -1,29 +1,9 @@
-{% extends 'base_generic.html' %} {% load static %}
+{% extends 'registration/registration_base.html' %} {% load static %}
 
 <!-- templates/registration/login.html -->
 
 {% block content %}
-<h2>Login</h2>
 
-{% comment %}
-<form method="POST">
-  {% csrf_token %}
-
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username" required />
-  </div>
-
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password" required />
-  </div>
-
-  <div>
-    <button type="submit">Login</button>
-  </div>
-</form>
-{% endcomment %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -163,7 +143,9 @@
     </style>
   </head>
   <body>
+    {% comment %}
     <h2>Modal Login Form</h2>
+    {% endcomment %}
 
     <button
       onclick="document.getElementById('id01').style.display='block'"
@@ -227,7 +209,7 @@
       </form>
     </div>
     <p>
-      Don't have an account? <a href="{% url 'register' %}">Register here</a>
+      Don't have an account? <a href="{% url 'access_page' %}">Register here</a>
     </p>
 
     {% if messages %}

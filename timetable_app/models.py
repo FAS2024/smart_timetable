@@ -64,3 +64,11 @@ class TimetableEntry(models.Model):
 
     def __str__(self):
         return f"{self.subject} with {self.teacher} in {self.room} at {self.time_slot}"
+
+
+
+class IdentificationNumber(models.Model):
+    identification_number = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.identification_number

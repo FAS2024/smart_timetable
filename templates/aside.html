@@ -1,0 +1,324 @@
+<!-- Sidebar  -->
+
+{% load static %}
+<nav id="sidebar">
+  <div class="sidebar_blog_1">
+    <div class="sidebar-header">
+      <div class="logo_section">
+        <a href="index.html"
+          ><img
+            class="logo_icon img-responsive"
+            src="{% static 'img/school_logo.jpg' %}"
+            alt="#"
+        /></a>
+      </div>
+    </div>
+    <div class="sidebar_user_info">
+      <div class="icon_setting"></div>
+      <div class="user_profle_side">
+        <div class="user_img">
+          <img
+            class="profile-pic"
+            src="{{ request.user.picture.url }}"
+            style="width: 50px; height: 50px; border-radius: 100%"
+          />
+        </div>
+        <div class="user_info">
+          <h6>
+            <span class="name_user">
+              <strong> {{ request.user.get_full_name }} </strong>
+            </span>
+          </h6>
+          <p><span class="online_animation"></span> Online</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar_blog_2">
+    <h4>General</h4>
+
+    <div class="">
+      <!-- <style>
+        .top-side {
+          background-size: cover;
+          background-position: top center;
+        }
+      </style> -->
+
+      <div class="main-menu">
+        <!-- {% url 'profile' as prof %} {% url 'lecturer_list' as lec %} {% url
+        'student_list' as stu %} {% url 'course_allocation_view' as cav %} {%
+        url 'programs' as pro %} {% url 'session_list' as sess %} {% url
+        'semester_list' as sem %} {% url 'add_score' as ascore %} {% url
+        'grade_results' as vr %}{% url 'ass_results' as ar %} {% url
+        'course_registration' as cr %} {% url 'edit_profile' as ep %} {% url
+        'change_password' as cp %} {% url 'quiz_progress' as qpr %} {% url
+        'quiz_marking' as qce %} {% url 'user_course_list' as ucl %} {% url
+        'admin_panel' as admin_p %} -->
+        <ul>
+          <li class="{% if request.path == hom %}active{% endif %}">
+            <a href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
+          </li>
+
+          {% if request.user.is_superuser %}
+          <li class="{% if request.path == dash %}active{% endif %}">
+            <a href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+          </li>
+          <li class="{% if request.path == admin_p %}active{% endif %}">
+            <a href=""><i class="fas fa-user-tie"></i>Admin Panel</a>
+          </li>
+          <li class="{% if request.path == admn %}active{% endif %}">
+            <a href="{% url 'retrieve_identification_numbers' %}"
+              ><i class="fas fa-user-tie"></i>Identification Number</a
+            >
+          </li>
+          <li class="user_profile_dd">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fas fa-book"></i
+              ><span>
+                <strong> Manage Subjects</strong>
+              </span></a
+            >
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Create Subject</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Subject Lists</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Add & Drop Student Subject</a
+              >
+            </div>
+          </li>
+          <li class="user_profile_dd">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fas fa-book-open red_color"></i
+              ><span>
+                <strong> Manage Classes</strong>
+              </span></a
+            >
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Create Class</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Class Lists</a
+              >
+            </div>
+          </li>
+          <li class="user_profile_dd">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fas fa-chalkboard-teacher yellow_color"></i
+              ><span>
+                <strong> Manage Teachers</strong>
+              </span></a
+            >
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Create Teachers</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Teacher Lists</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Class Teacher Allocation</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Subject Teacher Allocation</a
+              >
+            </div>
+          </li>
+          <li class="user_profile_dd">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fas fa-user-graduate green_color"></i
+              ><span>
+                <strong> Manage Students</strong>
+              </span></a
+            >
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Create Students</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Student Lists</a
+              >
+            </div>
+          </li>
+          <li class="user_profile_dd">
+            <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fas fa-record-vinyl"></i
+              ><span>
+                <strong> Manage Questions</strong>
+              </span></a
+            > -->
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href="profile.html"
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Approve Questions</a
+              >
+              <a
+                class="dropdown-item"
+                href="settings.html"
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Allocate Questions</a
+              >
+            </div>
+            {% endif %}
+          </li>
+          {% if request.user.is_superuser or request.user.is_lecturer %}
+          <li class="{% if request.path == qce %}active{% endif %}">
+            <a href=""
+              ><i class="fas fa-check-double green_color"></i>Complete Exams</a
+            >
+          </li>
+          <li>
+            <a href=""
+              ><i class="fas fa-book green_color"></i>Subject Performance</a
+            >
+          </li>
+          {% endif %} {% if request.user.is_superuser%}
+          <li>
+            <a href=""><i class="fas fa-table yellow_color"></i>Manage Quiz</a>
+          </li>
+          {% endif %} {% if request.user.is_lecturer %}
+          <li class="{% if request.path == ascore %}active{% endif %}">
+            <a href=""><i class="fas fa-table"></i>Manage Score</a>
+          </li>
+
+          <li class="{% if request.path == asd %}active{% endif %}">
+            <a href=""
+              ><i class="fas fa-user-graduate"></i>Manage Student Records</a
+            >
+          </li>
+
+          {% endif %}
+
+          <div class=""></div>
+          {% if request.user.is_lecturer or request.user.is_student %}
+          <li class="{% if request.path == ucl %}active{% endif %}">
+            <a href=""><i class="fas fa-book yellow_color"></i>My Courses</a>
+          </li>
+          {% endif %} {% if request.user.is_student %}
+          <li class="{% if request.path == qpr %}active{% endif %}">
+            <a href=""><i class="fas fa-record-vinyl"></i>Quiz Progress Rec</a>
+          </li>
+          <li class="{% if request.path == qpr %}active{% endif %}">
+            <a href=""><i class="fas fa-record-vinyl"></i>Quiz Done</a>
+          </li>
+          <li class="{% if request.path == viewr %}active{% endif %}">
+            <a href=""><i class="fab fa-page4 green_color"></i>View Results</a>
+          </li>
+          <li class="{% if request.path == ar %}active{% endif %}">
+            <a href=""><i class="fa fa-spell-check"></i>Assessment Results</a>
+          </li>
+
+          <li class="{% if request.path == vr %}active{% endif %}">
+            <a href=""><i class="fab fa-page4"></i>Grade Results</a>
+          </li>
+
+          {% endif %} {% if request.user.is_superuser %}
+          <hr />
+          <li class="user_profile_dd">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+              ><i class="fa fa-cog yellow_color"></i>
+              <span>
+                <strong> Settings</strong>
+              </span></a
+            >
+            <div
+              class="dropdown-menu"
+              style="background-color: rgb(33, 65, 98)"
+            >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Session</a
+              >
+              <a
+                class="dropdown-item"
+                href=""
+                style="color: rgb(255, 87, 34); font-weight: bold"
+                >Quarter</a
+              >
+            </div>
+          </li>
+
+          {% endif %}
+          <hr />
+          <li>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button
+                type="submit"
+                style="
+                  background-color: black;
+                  color: white;
+                  width: 100%;
+                  margin: 15px;
+                  text-align: left;
+                  padding-left: 25px;
+                  height: 38px;
+                "
+              >
+                <span>Log Out <i class="fa fa-sign-out"></i></span>
+              </button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- end sidebar -->
