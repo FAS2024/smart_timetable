@@ -1,0 +1,148 @@
+
+{% extends 'base_generic.html' %} {% load static %}
+{% comment %} {% block title %}{{ title }}{% endblock title %} {% endcomment %}
+
+{% block content %}
+
+<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i>Identification list</div>
+
+{% if request.user.is_superuser %}
+<a class="add-button" href="{% url 'add_identification_numbers' %}"><i class="fas fa-plus"></i>Add New Admission Number / Staff ID</a>
+{% endif %}
+
+<div class="title-1"><i class="fas fa-hashtag"></i>Admission Numbers / Staff ID </div>
+<div class="title-line"></div>
+
+
+<div class="table-responsive table-shadow p-0 mt-5">
+    <table class="table" id="identification_table">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th> Number </th>
+                {% if request.user.is_superuser %}
+                <th> Actions </th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for identification_number in identification_numbers %}
+            <tr>
+                <td> {{ forloop.counter }}.</td>
+                <td>{{ identification_number.identification_number}}</td>
+                {% if request.user.is_superuser %}
+                <td>
+        <span>
+          <button class="btn btn-primary">
+            <a
+              style="color: white"
+              href="{% url 'update_identification_number' pk=identification_number.pk %}" 
+            >
+              Edit</a
+            >
+          </button>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-toggle="modal"
+            data-target="#{{identification_number.pk}}"
+          >
+            Delete
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="{{identification_number.pk}}"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    You are about to delete {{identification_number}} 
+                  </h5>
+
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                  <p>
+                    <strong style="color: red; padding: 10px"
+                      >Are you sure you want to delete {{identification_number}} Number?</strong
+                    >
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger">
+                    <a
+                      style="color: white"
+                    href="{% url 'delete_identification_number' pk=identification_number.pk %}" 
+                    >
+                      Yes</a
+                    >
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+
+
+                    
+                </td>
+                {% endif %}
+
+                {% empty %}
+            <tr>
+                <td></td>
+               
+                <td>
+                    <span class="text-danger">
+                        <i class="far fa-frown"></i>No Numbers.
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'add_identification_numbers' %}">
+                            <i class="primary" style="font-size: 22px;">
+                                Add Now.
+                            </i>
+                            {% endif %}
+                        </a>
+                    </span>
+                </td>
+                <td></td>
+                
+            </tr>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $("#identification_table").DataTable({
+    ordering: false,
+  });
+</script>
+
+{% endblock morejs %}
