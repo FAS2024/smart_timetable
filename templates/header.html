@@ -7,12 +7,31 @@
         <i class="fa fa-bars"></i>
       </button>
       <div class="logo_section">
-        <a href="{% url 'home' %}"
+        {% if request.user.is_superuser %}
+        <a href="{% url 'admin_home' %}"
           ><img
             class="img-responsive"
             src="{% static 'img/school_logo.jpg' %}"
             alt="wanies-logo"
         /></a>
+        {% elif request.user.role == "teacher" %}
+
+        <a href="{% url 'teacher_home' %}"
+          ><img
+            class="img-responsive"
+            src="{% static 'img/school_logo.jpg' %}"
+            alt="wanies-logo"
+        /></a>
+        {% elif request.user.role == "student" %}
+
+        <a href="{% url 'student_home' %}"
+          ><img
+            class="img-responsive"
+            src="{% static 'img/school_logo.jpg' %}"
+            alt="wanies-logo"
+        /></a>
+
+        {% endif %}
       </div>
       <div class="right_topbar">
         <div class="icon_info">
@@ -40,16 +59,14 @@
                   border-radius: 100%;
                   padding: 3px;
                 "
-                ><strong
-                  >{{ request.user.get_user_role }}tttttthhghhjjht</strong
-                ></i
+                ><strong>{{ request.user.identification_number }}</strong></i
               >
 
-              <a class="dropdown-toggle" data-toggle="dropdown"
-                ><span class="name_user">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <span class="name_user">
                   <strong> {{ request.user.get_full_name }} </strong>
-                </span></a
-              >
+                </span>
+              </a>
               <div
                 class="dropdown-menu"
                 style="background-color: rgb(230, 233, 236)"

@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import IdentificationNumber
+from .models import IdentificationNumber,CustomUser
+from django.contrib.auth.admin import UserAdmin
 
-@admin.register(IdentificationNumber)
-class MatricNumberAdmin(admin.ModelAdmin):
-    list_display = ['identification_number']
 
+
+
+admin.site.register(IdentificationNumber)
+admin.site.register(CustomUser)

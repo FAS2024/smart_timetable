@@ -4,9 +4,10 @@
 
 {% block content %}
 
-<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i>Identification list</div>
+
 
 {% if request.user.is_superuser %}
+<div id="input-nav"><a href="{% url 'admin_home' %}" class="primary1">Home</a> Identification list</div>
 <a class="add-button" href="{% url 'add_identification_numbers' %}"><i class="fas fa-plus"></i>Add New Admission Number / Staff ID</a>
 {% endif %}
 
@@ -20,6 +21,8 @@
             <tr>
                 <th>S/N</th>
                 <th> Number </th>
+                <th> Role </th>
+                <th> Used</th>
                 {% if request.user.is_superuser %}
                 <th> Actions </th>
                 {% endif %}
@@ -29,7 +32,15 @@
             {% for identification_number in identification_numbers %}
             <tr>
                 <td> {{ forloop.counter }}.</td>
-                <td>{{ identification_number.identification_number}}</td>
+                <td>{{ identification_number.number}}</td>
+                
+                <td>{{ identification_number.role}}</td>
+                <td>{% if identification_number.is_used == True %}
+                      <i style="font-size:18px" class="fas fa-check-circle"></i>
+                      {% else %}
+                      <i class="fas fa-times-circle fa-1-5x danger"></i>
+                    {% endif %}
+                </td>
                 {% if request.user.is_superuser %}
                 <td>
         <span>
@@ -112,6 +123,7 @@
 
                 {% empty %}
             <tr>
+                <td></td>
                 <td></td>
                
                 <td>

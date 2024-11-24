@@ -5,12 +5,17 @@ from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
+    path('student/',views.student_home, name="student_home"),
+    path('teacher/',views.teacher_home, name="teacher_home"),
+    path('admin_home/',views.admin_home, name="admin_home"),
     path('',views.home, name="home"),
      
     
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # Add this line for logout
   
     # Registration path
+    path('sign-up/access/', views.access_page, name='access_page'),
+    # path('register/<str:identification_number>/', views.register, name='register'),
     path('register/', views.register, name='register'),
 
     # Other URLs (login, etc.)
@@ -27,7 +32,15 @@ urlpatterns = [
     path('identification_number/update/<int:pk>/', views.update_identification_number, name='update_identification_number'),
     path('identification_number/delete/<int:pk>/', views.delete_identification_number, name='delete_identification_number'),
     
-    path('sign-up/access/', views.access_page, name='access_page'),
-
+    
+    # teachers
+    path('teachers/view/', views.view_teachers, name='view_teachers'),
+    
+    
+    
+    
+      
+    # students
+    path('students/view/', views.view_students, name='view_students'),
 
 ]

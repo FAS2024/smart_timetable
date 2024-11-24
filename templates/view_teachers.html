@@ -1,0 +1,151 @@
+
+{% extends 'base_generic.html' %} {% load static %}
+{% comment %} {% block title %}{{ title }}{% endblock title %} {% endcomment %}
+
+{% block content %}
+
+
+
+{% if request.user.is_superuser %}
+<div id="input-nav"><a href="{% url 'admin_home' %}" class="primary1">Home</a> Teacher's list</div>
+<a class="add-button" href=""><i class="fas fa-plus"></i>Add Teacher</a>
+{% endif %}
+
+<div class="title-1"><i class="fas fa-user"></i>Teachers </div>
+<div class="title-line"></div>
+
+
+<div class="table-responsive table-shadow p-0 mt-5">
+    <table class="table" id="teachers">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th> Name </th>
+                <th> Role </th>
+                {% if request.user.is_superuser %}
+                <th> Actions </th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+            <tr>
+                <td> {{ forloop.counter }}.</td>
+                <td>{{ teacher.get_full_name}}</td>
+                
+                <td>{{ teacher.role}}</td>
+                {% if request.user.is_superuser %}
+                <td>
+                  <span>
+                    <button class="btn btn-primary">
+                      <a
+                        style="color: white"
+                        href=""  
+                      >
+                      <!--Update url is in the above href  -->
+                        Edit</a
+                      >
+                    </button>
+                    <!-- Button trigger modal -->
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-toggle="modal"
+                      data-target="#{{teacher.pk}}"
+                    >
+                      Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <div
+                      class="modal fade"
+                      id="{{teacher.pk}}"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                              You are about to delete {{teacher}} 
+                            </h5>
+
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body" style="text-align: center">
+                            <p>
+                              <strong style="color: red; padding: 10px"
+                                >Are you sure you want to delete {{teacher}}?</strong
+                              >
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger">
+                              <a
+                                style="color: white"
+                              href="" 
+                              >
+                               <!--delete url is in the above href  -->
+                                Yes</a
+                              >
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </span>
+                </td>
+                {% endif %}
+
+                {% empty %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <span class="text-danger">
+                        <i class="far fa-frown"></i>No Numbers.
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'add_teachers' %}">
+                            <i class="primary" style="font-size: 22px;">
+                                Add Now.
+                            </i>
+                            {% endif %}
+                        </a>
+                    </span>
+                </td>
+                <td></td>
+                
+            </tr>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $("#teachers").DataTable({
+    ordering: false,
+  });
+</script>
+
+{% endblock morejs %}

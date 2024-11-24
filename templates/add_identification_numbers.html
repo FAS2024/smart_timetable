@@ -3,11 +3,12 @@
 {% endcomment %} {% load crispy_forms_tags %} {% load static %} <br />
 {% block content %}
 <div id="input-nav">
-  <a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i>
+  {% if request.user.is_superuser %}
+  <a href="{% url 'admin_home' %}" class="primary1">Home</a>{% endif %}
   <a href="{% url 'add_identification_numbers' %}" class="primary1"
     >Identification Numbers</a
   >
-  <i>&rsaquo;</i> Add
+  Add
 </div>
 <br />
 
@@ -18,6 +19,7 @@
       <div class="p-3">
         <br />
 
+        {% comment %}
         <form method="post">
           {% csrf_token %}
           <label for="identification_numbers"
@@ -30,9 +32,41 @@
             id="identification_numbers"
             required
           />
+          <br />
+          <label for="roles">Role</label
+          ><select id="roles" name="role" class="form-control" required>
+            <option value="default" disabled selected>Select a role</option>
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+          </select>
+
           <br /><br />
+
           <button type="submit" class="btn btn-primary">Add Number</button>
         </form>
+        {% endcomment %} {% comment %}
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Add Identification Number</title>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+          />
+        </head>
+        {% endcomment %}
+
+        <form method="POST" novalidate>
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" class="btn btn-primary mt-3">Add Number</button>
+        </form>
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} mt-3">{{ message }}</div>
+        {% endfor %}
       </div>
     </div>
   </div>

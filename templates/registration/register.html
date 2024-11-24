@@ -22,13 +22,12 @@
       .container {
         padding: 8px;
         background-color: white;
-      
       }
 
       /* Full-width input fields */
       input[type="text"],
       input[type="password"] {
-        width: 100%;
+        width: 80%;
         padding: 15px;
         margin: 5px 0 22px 0;
         display: inline-block;
@@ -56,7 +55,7 @@
         margin: 8px 0;
         border: none;
         cursor: pointer;
-        width: 100%;
+        width: 80%;
         opacity: 0.9;
       }
 
@@ -76,57 +75,40 @@
       }
     </style>
 
-    <body><div  class=""><form method="POST" style="color: black" >
-        {% csrf_token %}
-        <div class="container" >
-          <h1>Register</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr />
+    <body>
+      <div class="">
+        <form method="POST" style="color: black">
+          {% csrf_token %}
+          <div class="container">
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr />
 
-          <div>
-            <label for="username">Username:</label>
-            {{ form.username }}
+            <div>{{form.as_p}}</div>
+
+            <hr />
+            <p>
+              By creating an account you agree to our
+              <a href="#">Terms & Privacy</a>.
+            </p>
+
+            <button type="submit" class="registerbtn">Register</button>
           </div>
 
-          <div>
-            <label for="email" class="form-control">Email:</label>
-            {{ form.email }}
+          <div class="container signin">
+            <p>
+              Already have an account?
+              <a href="{% url 'login' %}">Login here</a>
+            </p>
           </div>
-          <br />
+        </form>
 
-          <div>
-            <label for="password">Password:</label>
-            {{ form.password }}
-          </div>
-
-          <div>
-            <label for="password_confirmation">Confirm Password:</label>
-            {{ form.password_confirmation }}
-          </div>
-
-          <hr />
-          <p>
-            By creating an account you agree to our
-            <a href="#">Terms & Privacy</a>.
-          </p>
-
-          <button type="submit" class="registerbtn">Register</button>
-        </div>
-
-        <div class="container signin">
-          <p>
-            Already have an account? <a href="{% url 'login' %}">Login here</a>
-          </p>
-        </div>
-      </form></div></body>
-
-    {% if messages %}
-    <div class="messages">
-      {% for message in messages %}
-      <p class="{{ message.tags }}">{{ message }}</p>
-      {% endfor %}
-    </div>
-    {% endif %}
+        <span style="color: red"
+          >{% if messages %} {% for message in messages %} {{ message }}
+          <br />{% endfor %} {% endif %}</span
+        >
+      </div>
+    </body>
   </body>
 </html>
 {% endblock content %}

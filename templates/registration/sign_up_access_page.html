@@ -8,14 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Access Page</title>
   </head>
+
   <body>
-    <h1>Enter Your Admission Number / Staff ID</h1>
+    <h1>Verify Your Admission Number / Staff ID</h1>
+    <br />
     <form method="post">
       {% csrf_token %} {{ form.as_p }}
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
-    {% if error %}
-    <p style="color: red">{{ error }}</p>
+    <br />
+    {% if messages %} 
+      {% for message in messages %} <span style="color:red">{{ message }}</span> {% endfor %}
     {% endif %}
   </body>
 </html>

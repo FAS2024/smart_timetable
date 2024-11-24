@@ -1,0 +1,125 @@
+<!-- templates/home.html -->
+{% extends 'base_generic.html' %} {% block content %}
+<div class="home-page">
+  <h2>Welcome to the School Timetable Management System</h2>
+</div>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Home - Timetable App</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Custom CSS -->
+  </head>
+
+  <body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h2,
+      h3 {
+        color: #333;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 10px 0;
+      }
+
+      ul li {
+        margin: 10px 0;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: #4caf50;
+      }
+
+      ul li a:hover {
+        text-decoration: underline;
+      }
+
+      .btn {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <!-- Main Content Section -->
+    <main>
+      <div class="container">
+        <!-- Welcome Section -->
+        <section id="welcome" class="section">
+          <br />
+          <h2>Welcome, Student!</h2>
+          <p>
+            Here's your personalized home page for quick access to your
+            timetable, profile, and more.
+          </p>
+        </section>
+
+        <!-- Class Schedule Section -->
+        <section id="schedule" class="section">
+          <h3><i class="fas fa-calendar-alt"></i> Your Class Schedule</h3>
+          <ul>
+            <li>Math - 9:00 AM to 10:00 AM</li>
+            <li>English - 10:30 AM to 11:30 AM</li>
+            <li>History - 12:00 PM to 1:00 PM</li>
+          </ul>
+          <button class="btn">
+            <i class="fas fa-eye"></i> View Full Schedule
+          </button>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="section">
+          <br />
+          <h3><i class="fas fa-bell"></i> Upcoming Events</h3>
+          <ul>
+            <li>Math Quiz - December 1, 2024</li>
+            <li>School Play - December 5, 2024</li>
+            <li>Science Fair - December 10, 2024</li>
+          </ul>
+          <button class="btn">
+            <i class="fas fa-calendar-check"></i> View All Events
+          </button>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+{% endblock %}

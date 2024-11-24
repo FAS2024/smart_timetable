@@ -1,0 +1,11 @@
+<!-- templates/home.html -->
+{% extends 'base_generic.html' %} {% block content %}
+<div class="home-page">
+  <br />
+  <h2>Welcome to the School Timetable Management System</h2>
+  <p>
+    Hi, {{ request.user.get_full_name }}! You are logged in and ready to manage
+    the school timetable.
+  </p>
+</div>
+{% endblock %}
